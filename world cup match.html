@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <!-- high chart -->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <script src="https://code.highcharts.com/highcharts-more.js"></script>
+  <script src="https://code.highcharts.com/modules/exporting.js"></script>
+  <script src="https://code.highcharts.com/modules/export-data.js"></script>
+  <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+  <title>Document</title>
+  <style>
+    #container {
+    height: 400px;
+  }
+  
+  .highcharts-figure,
+  .highcharts-data-table table {
+    min-width: 320px;
+    max-width: 1000px;
+    margin: 1em auto;
+  }
+  
+  .highcharts-data-table table {
+    font-family: Verdana, sans-serif;
+    border-collapse: collapse;
+    border: 1px solid #ebebeb;
+    margin: 10px auto;
+    text-align: center;
+    width: 100%;
+    max-width: 1000px;
+  }
+  
+  .highcharts-data-table caption {
+    padding: 1em 0;
+    font-size: 1.2em;
+    color: #555;
+  }
+  
+  .highcharts-data-table th {
+    font-weight: 600;
+    padding: 0.5em;
+  }
+  
+  .highcharts-data-table td,
+  .highcharts-data-table th,
+  .highcharts-data-table caption {
+    padding: 0.5em;
+  }
+  
+  .highcharts-data-table thead tr,
+  .highcharts-data-table tr:nth-child(even) {
+    background: #f8f8f8;
+  }
+  
+  .highcharts-data-table tr:hover {
+    background: #f1f7ff;
+  }
+  </style>
+  <script>
+    $(function () {
+               var chartdata={
+                   table: 'datatable'
+               }
+               var chartype = {
+                   type: 'column'
+               }
+               var chartitle = {
+                   text: 'Data extracted from a HTML table in the page'
+               }
+               var chartyaxis = {
+                   allowDecimals: false,
+                   title: {
+                       text: 'Units'
+                   }
+               }
+               var chartooltip = {
+                   formatter: function () {
+                       return '<b>' + this.series.name + '</b><br/>' +
+                           this.point.y + ' ' + this.point.name.toLowerCase();
+                   }
+               }
+               $('#container').highcharts({
+                   data:chartdata,
+                   chart:chartype,
+                   title: chartitle,
+                   yAxis: chartyaxis,
+                   tooltip: chartooltip
+               });
+           });
+   </script>
+</head>
+<body>
+  <div class="container">
+<div class="row container">
+    <div class="row">
+        <div class=" col-6">
+            <table class="table table-bordered border-primary table-success table-striped" id="display">
+                <thead>
+                  <h3 class="text-center">Group A</h3>
+                  <tr>
+                    <th scope="col">Number</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Points</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Quatar</td>
+                    <td>4</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">2</th>
+                    <td>Equador</td>
+                    <td>0</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Sengal</td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <th scope="row">3</th>
+                    <td>Netherland</td>
+                    <td>6</td>
+                  </tr>
+                </tbody>
+            </table>
+            <a href="#" class="btn btn-primary" onclick="io()">Display chart for A</a>
+
+            
+        </div>
+        <div class=" col-6">
+          <table class="table table-bordered border-primary table-success table-striped" id="display">
+              <thead>
+                <h3 class="text-center">Group B</h3>
+                <tr>
+                  <th scope="col">Number</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td id="hii">Quatar</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Equador</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Sengal</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Netherland</td>
+                  <td>6</td>
+                </tr>
+              </tbody>
+          </table>
+          <a href="#" class="btn btn-primary" onclick="io()">Display chart for A</a>
+
+      </div>
+    </div>
+</div>
+<div class="row container">
+  <div class="row">
+      <div class=" col-6">
+          <table class="table table-bordered border-primary table-success table-striped" id="datatable">
+              <thead>
+                <h3 class="text-center">Group C</h3>
+                <tr>
+                  <th scope="col">Number</th>
+                  <th scope="col">Country</th>
+                  <th scope="col">Points</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Quatar</td>
+                  <td>4</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Equador</td>
+                  <td>0</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Sengal</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>Netherland</td>
+                  <td>6</td>
+                </tr>
+              </tbody>
+          </table>
+          <a href="#" class="btn btn-primary" onclick="io()">Display chart for A</a>
+
+      </div>
+      <div class=" col-6">
+        <table class="table table-bordered border-primary table-success table-striped" id="datatable">
+            <thead>
+              <h3 class="text-center">Group D</h3>
+              <tr>
+                <th scope="col">Number</th>
+                <th scope="col">Country</th>
+                <th scope="col">Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Quatar</td>
+                <td>4</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Equador</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Sengal</td>
+                <td>3</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Netherland</td>
+                <td>6</td>
+              </tr>
+            </tbody>
+        </table>
+        <a href="#" class="btn btn-primary" onclick="io()">Display chart for A</a>
+
+    </div>
+  </div>
+</div>
+  </div>
+ 
+
+
+            <figure class="highcharts-figure">
+                <div id="container"></div>
+                <p class="highcharts-description">
+                    
+                </p>
+            </figure>
+  <script>
+    const point=[3,2,5,4,6,5,8,7,9,4,2,5,7,3,2,1];
+    var po="point";
+    function add(){
+        for(let i=0;i<point.length;i++){
+            var t=po;
+            t+=i;
+            console.log(t);
+            var opp=t;
+            document.getElementById(opp).innerHTML=point[i];
+            
+        }
+        
+    }
+
+    // Data retrieved from https://gs.statcounter.com/browser-market-share#monthly-202201-202201-bar
+
+// Create the chart
+function io(){
+    
+Highcharts.chart('container', {
+    chart: {
+        type: 'column'
+    },
+    title: {
+        align: 'left',
+        text: 'World Cup 2022'
+    },
+    subtitle: {
+        align: 'left',
+    },
+    accessibility: {
+        announceNewData: {
+            enabled: true
+        }
+    },
+    xAxis: {
+        type: 'category'
+    },
+    yAxis: {
+        title: {
+            text: 'Group Rank'
+        }
+
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        series: {
+            borderWidth: 0,
+            dataLabels: {
+                enabled: true,
+                format: '{point.y:.1f}%'
+            }
+        }
+    },
+
+    tooltip: {
+        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b> of total<br/>'
+    },
+
+    series: [
+        {
+            name: "Browsers",
+            colorByPoint: true,
+            data: [
+                {
+                    name: "Quatar",
+                    y: 4,
+                    drilldown: "Quatar"
+                },
+                {
+                    name: "Equador",
+                    y: 0,
+                    drilldown: "Equador"
+                },
+                {
+                    name: "Sengal",
+                    y: 3,
+                    drilldown: "Sengal"
+                },
+                {
+                    name: "Netherland",
+                    y: 6,
+                    drilldown: "Netherland"
+                },
+                
+            ]
+        }
+    ],
+   
+});
+}
+
+  </script>
+</body>
+</html>
